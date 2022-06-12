@@ -25,27 +25,50 @@ const addUID = <T extends object>(obj: T) => {
     return {...obj, uid};
 }
 
-let docOne = addUID({name: 'Yoshi', age: 20});
+// let docOne = addUID({name: 'Yoshi', age: 20});
 
-console.log(docOne.name)
+// console.log(docOne.name)
 
 //with Interfaces
+// interface Resource<T> {
+//     uid: number;
+//     resourceName: string;
+//     data: T
+// }
+//
+// const docThree: Resource<object> = {
+//     uid: 1,
+//     resourceName: 'person',
+//     data: {name: 'mario'}
+// }
+//
+// const docFour: Resource<number[]> = {
+//     uid: 2,
+//     resourceName: 'people',
+//     data: [1, 2]
+// }
+//
+// console.log(docThree, docFour)
+
+// ENUMS
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
+
 interface Resource<T> {
     uid: number;
-    resourceName: string;
+    resourceType: ResourceType;
     data: T
 }
 
-const docThree: Resource<object> = {
+const docOne: Resource<object> = {
     uid: 1,
-    resourceName: 'person',
+    resourceType: ResourceType.DIRECTOR,
     data: {name: 'mario'}
 }
 
-const docFour: Resource<number[]> = {
-    uid: 2,
-    resourceName: 'people',
-    data: [1, 2]
+const docTwo: Resource<object> = {
+    uid: 10,
+    resourceType: ResourceType.FILM,
+    data: {title: 'name of the wild'}
 }
 
-console.log(docThree, docFour)
+console.log(docOne, docTwo)
