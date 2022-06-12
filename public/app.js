@@ -1,5 +1,6 @@
 import { Invoice } from "./classes/Invoice.js";
 import { Payment } from "./classes/Payment.js";
+import { ListTemplate } from "./classes/ListTemplate.js";
 let docOne, docTwo;
 // docOne = new Invoice('yoshi', 'web work', 250);
 // docTwo = new Payment('mario', 'plumbing work', 200);
@@ -23,6 +24,8 @@ let docOne, docTwo;
 const form = document.querySelector('.new-item-form');
 // inputs
 const type = document.querySelector('#type'), toFrom = document.querySelector('#tofrom'), details = document.querySelector('#details'), amount = document.querySelector('#amount');
+// list template instane
+const ul = document.querySelector('.item-list'), list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
@@ -32,5 +35,5 @@ form.addEventListener('submit', (e) => {
     else {
         doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
     }
-    console.log(doc);
+    list.render(doc, type.value, 'end');
 });
