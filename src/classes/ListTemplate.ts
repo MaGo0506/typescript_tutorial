@@ -17,3 +17,35 @@ export class ListTemplate {
         pos === 'start' ? this.container.prepend(li) : this.container.append(li)
     }
 }
+
+// GENERICS
+
+const addUID = <T extends object>(obj: T) => {
+    let uid = Math.floor(Math.random() * 100);
+    return {...obj, uid};
+}
+
+let docOne = addUID({name: 'Yoshi', age: 20});
+
+console.log(docOne.name)
+
+//with Interfaces
+interface Resource<T> {
+    uid: number;
+    resourceName: string;
+    data: T
+}
+
+const docThree: Resource<object> = {
+    uid: 1,
+    resourceName: 'person',
+    data: {name: 'mario'}
+}
+
+const docFour: Resource<number[]> = {
+    uid: 2,
+    resourceName: 'people',
+    data: [1, 2]
+}
+
+console.log(docThree, docFour)
