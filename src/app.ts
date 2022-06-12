@@ -1,42 +1,47 @@
-// Interfaces
-interface IsPerson {
-    name: string;
-    age: number;
+import {Invoice} from "./classes/Invoice.js";
+import {Payment} from "./classes/Payment.js";
+import { HasFormatter } from "./interfaces/HasFormatter.js";
 
-    speak(a: string): void;
+let docOne: HasFormatter,
+    docTwo: HasFormatter;
 
-    spend(a: number): number
-}
+// docOne = new Invoice('yoshi', 'web work', 250);
+// docTwo = new Payment('mario', 'plumbing work', 200);
+//
+// let docs: HasFormatter[] = [];
+// docs.push(docOne, docTwo);
+//
+// console.log(docs)
+//
+// const invOne = new Invoice('Mario', 'Work on the Mario website', 250);
+// const invTwo = new Invoice('Luigi', 'Work on the Luigi website', 350);
+//
+// let invoices: Invoice[] = [];
+//
+// invoices.push(invOne, invTwo);
+//
+//
+// invoices.forEach(inv => {
+//     console.log(inv.client, inv.amount, inv.format());
+// })
 
-const me: IsPerson = {
-    name: 'marko',
-    age: 30,
-    speak(text: string): void {
-        console.log(text)
-    },
-    spend(amount: number): number {
-        console.log(`I spent ${amount}`);
-        return amount;
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+
+// inputs
+const type = document.querySelector('#type') as HTMLInputElement,
+    toFrom = document.querySelector('#tofrom') as HTMLInputElement,
+    details = document.querySelector('#details') as HTMLInputElement,
+    amount = document.querySelector('#amount') as HTMLInputElement
+
+form.addEventListener('submit', (e: Event) => {
+    e.preventDefault();
+
+    let doc: HasFormatter;
+
+    if (type.value === 'invoice') {
+        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+    } else {
+        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber)
     }
-};
-
-const greePerson = (person: IsPerson) => {
-    console.log(`hello`, person.name);
-}
-
-greePerson(me)
-
-import {Invoice} from "./classes/invoice.js";
-
-const invOne = new Invoice('Mario', 'Work on the Mario website', 250);
-const invTwo = new Invoice('Luigi', 'Work on the Luigi website', 350);
-
-let invoices: Invoice[] = [];
-
-invoices.push(invOne, invTwo);
-
-console.log(invoices)
-
-invoices.forEach(inv => {
-    console.log(inv.client, inv.amount, inv.format());
+    console.log(doc)
 })
