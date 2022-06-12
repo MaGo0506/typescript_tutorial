@@ -51,24 +51,35 @@ const addUID = <T extends object>(obj: T) => {
 // console.log(docThree, docFour)
 
 // ENUMS
-enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
+// enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
+//
+// interface Resource<T> {
+//     uid: number;
+//     resourceType: ResourceType;
+//     data: T
+// }
+//
+// const docOne: Resource<object> = {
+//     uid: 1,
+//     resourceType: ResourceType.DIRECTOR,
+//     data: {name: 'mario'}
+// }
+//
+// const docTwo: Resource<object> = {
+//     uid: 10,
+//     resourceType: ResourceType.FILM,
+//     data: {title: 'name of the wild'}
+// }
+//
+// console.log(docOne, docTwo)
 
-interface Resource<T> {
-    uid: number;
-    resourceType: ResourceType;
-    data: T
-}
+// Tuples
 
-const docOne: Resource<object> = {
-    uid: 1,
-    resourceType: ResourceType.DIRECTOR,
-    data: {name: 'mario'}
-}
+let arr = ['ryu', 25, true];
+arr[0] = false;
+arr[1] = 'Yoshi';
+arr = [30, false, 'yoshi']
 
-const docTwo: Resource<object> = {
-    uid: 10,
-    resourceType: ResourceType.FILM,
-    data: {title: 'name of the wild'}
-}
-
-console.log(docOne, docTwo)
+let tup: [string, number, boolean] = ['ryu', 25, true]
+tup[0] = 'ken';
+tup[1] = 30

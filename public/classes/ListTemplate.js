@@ -39,22 +39,32 @@ const addUID = (obj) => {
 //
 // console.log(docThree, docFour)
 // ENUMS
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
-    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
-    ResourceType[ResourceType["FILM"] = 2] = "FILM";
-    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
-    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
-})(ResourceType || (ResourceType = {}));
-const docOne = {
-    uid: 1,
-    resourceType: ResourceType.DIRECTOR,
-    data: { name: 'mario' }
-};
-const docTwo = {
-    uid: 10,
-    resourceType: ResourceType.FILM,
-    data: { title: 'name of the wild' }
-};
-console.log(docOne, docTwo);
+// enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
+//
+// interface Resource<T> {
+//     uid: number;
+//     resourceType: ResourceType;
+//     data: T
+// }
+//
+// const docOne: Resource<object> = {
+//     uid: 1,
+//     resourceType: ResourceType.DIRECTOR,
+//     data: {name: 'mario'}
+// }
+//
+// const docTwo: Resource<object> = {
+//     uid: 10,
+//     resourceType: ResourceType.FILM,
+//     data: {title: 'name of the wild'}
+// }
+//
+// console.log(docOne, docTwo)
+// Tuples
+let arr = ['ryu', 25, true];
+arr[0] = false;
+arr[1] = 'Yoshi';
+arr = [30, false, 'yoshi'];
+let tup = ['ryu', 25, true];
+tup[0] = 'ken';
+tup[1] = 30;
